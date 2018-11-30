@@ -1,0 +1,4 @@
+﻿  Application.cpp
+c:\dev\opengl\opengl-learning\opengl-learning\src\application.cpp(187): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\dev\opengl\opengl-learning\opengl-learning\src\application.cpp(257): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  opengl-learning.vcxproj -> C:\dev\opengl\opengl-learning\Debug\opengl-learning.exe
