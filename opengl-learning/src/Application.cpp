@@ -188,7 +188,6 @@ int main()
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
 
-		std::cout << 1/deltaTime << std::endl;
 
 		// input
 		// -----
