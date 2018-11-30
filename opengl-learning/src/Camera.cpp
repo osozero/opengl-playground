@@ -1,4 +1,5 @@
 #include "Camera.h"
+#include "Math.h"
 
 
 Camera::Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch)
@@ -23,7 +24,10 @@ Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float u
 
 glm::mat4 Camera::GetViewMatrix()
 {
-	return glm::lookAt(Position, Position + Front, Up);
+	//auto ownResult = Math::LookAt(Position,Front, Up);
+	auto result = glm::lookAt(Position, Position + Front, Up);
+
+	return result;
 }
 
 void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
@@ -37,6 +41,10 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 	if (direction == LEFT) Position -= Right * velocity;
 
 	if (direction == RIGHT) Position += Right * velocity;
+
+
+	//keeps user at ground level
+	Position.y = 0.0f;
 }
 
 void Camera::ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch)

@@ -299,6 +299,7 @@ void processInput(GLFWwindow* window)
 		camera.ProcessKeyboard(RIGHT, deltaTime);
 	}
 
+
 }
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
