@@ -6,14 +6,19 @@
 #include "Texture.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
+#include <wincrypt.h>
 
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+
+void mouse_scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+
 // settings
-const unsigned int SCR_WIDTH = 1800;
-const unsigned int SCR_HEIGHT = 1200;
+const unsigned int SCR_WIDTH = 800;//1800;
+const unsigned int SCR_HEIGHT = 600;//1200;
 
 
 float horizontalMovement = 0.3f;
@@ -27,6 +32,21 @@ glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 //timing
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
+
+//mouse events handling
+bool firstMouse = true;
+double lastX = 400;
+double lastY = 300;
+
+//yaw
+float yaw = -90.0f;
+
+//pitch
+float pitch = 0.0f;
+
+//fov - for zooming
+
+float fov = 45.0f;
 
 int main()
 {
@@ -53,8 +73,16 @@ int main()
 		glfwTerminate();
 		return -1;
 	}
+
 	glfwMakeContextCurrent(window);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
+	//mouse event handler setting
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetCursorPosCallback(window, mouse_callback);
+
+	//mouse scroll event handler setting
+	glfwSetScrollCallback(window, mouse_scroll_callback);
 
 	// glad: load all OpenGL function pointers
 	// ---------------------------------------
@@ -174,10 +202,7 @@ int main()
 	};
 
 
-	//projection matrix
-	glm::mat4 projection(1.0f);
-	projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-	shader.SetMat4("projection", projection);
+	
 
 	// render loop
 	// -----------
@@ -213,6 +238,11 @@ int main()
 		glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 
 		shader.SetMat4("view", view);
+
+		//projection matrix
+		glm::mat4 projection(1.0f);
+		projection = glm::perspective(glm::radians(fov), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+		shader.SetMat4("projection", projection);
 
 
 		for(int i=0;i<10;i++)
@@ -275,6 +305,64 @@ void processInput(GLFWwindow* window)
 		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp))*cameraSpeed;
 	}
 
+}
+
+void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	if(firstMouse)
+	{
+		lastX = xpos;
+		lastY = ypos;
+		firstMouse = false;
+	}
+
+	float xoffset = xpos - lastX;
+	float yoffset = lastY - ypos;
+	lastX = xpos;
+	lastY = ypos;
+
+	float sensitivity = 0.05f;
+	xoffset *= sensitivity;
+	yoffset *= sensitivity;
+
+	yaw += xoffset;
+	pitch += yoffset;
+
+	if(pitch>89.0f)
+	{
+		pitch = 89.0f;
+	}
+	if(pitch<-89.0f)
+	{
+		pitch = -89.0f;
+	}
+
+	glm::vec3 front(1.0f);
+
+	front.x = cos(glm::radians(yaw))*cos(glm::radians(pitch));
+	front.y = sin(glm::radians(pitch));
+	front.z = sin(glm::radians(yaw))*cos(glm::radians(pitch));
+
+	cameraFront = glm::normalize(front);
+
+}
+
+void mouse_scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	if(fov>=1.0f && fov<=90.0f)
+	{
+		fov -= yoffset;
+	}
+
+	if(fov<=1.0f)
+	{
+		fov = 1.0f;
+	}
+
+	if(fov>=90.0f)
+	{
+		fov = 90.0f;
+	}
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
