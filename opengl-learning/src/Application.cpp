@@ -198,18 +198,20 @@ int main()
 		// also draw the lamp object
 		lampShader.Use();
 		lampShader.SetMat4("projection", projection);
-
-		auto pos = glfwGetTime();
-
-		//view = glm::mat4(1.0f);
-
 		lampShader.SetMat4("view", view);
 		
 
 
 		model = glm::mat4(1.0f);
-		
+
+		auto pos = glfwGetTime();
+
+		lightPos.x = 2*sin(pos);
+		lightPos.y = 0;
+		lightPos.z = 2*cos(pos);
+
 		model = glm::translate(model, lightPos);
+		//model = glm::translate(model, lightPos);
 		model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
 
 
