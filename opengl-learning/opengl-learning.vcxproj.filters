@@ -41,6 +41,14 @@
     <None Include="shader\shader.vs" />
     <None Include="shader\shader.fs" />
     <None Include="shader\texture-shader.vs" />
+    <None Include="shader\lighting\1-lighting.vs" />
+    <None Include="shader\lighting\1-lighting.fs" />
+    <None Include="shader\lighting\1-lighting-lamp.vs" />
+    <None Include="shader\lighting\1-lighting-lamp.fs" />
+    <None Include="shader\lighting\2.1-basic-lighting.vs" />
+    <None Include="shader\lighting\2.1-basic-lighting.fs" />
+    <None Include="shader\lighting\2.2-basic-lighting.vs" />
+    <None Include="shader\lighting\2.2-basic-lighting.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Shader.h">

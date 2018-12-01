@@ -44,7 +44,7 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 
 
 	//keeps user at ground level
-	Position.y = 0.0f;
+	//Position.y = 0.0f;
 }
 
 void Camera::ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch)
