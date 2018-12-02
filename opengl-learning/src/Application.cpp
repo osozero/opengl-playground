@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include "Shader.h"
-#include "Texture.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "Camera.h"
@@ -16,8 +15,8 @@ void processInput(GLFWwindow *window);
 unsigned int loadTexture(const char *path,int index);
 
 // settings
-const unsigned int SCR_WIDTH = 1800;
-const unsigned int SCR_HEIGHT = 1200;
+const unsigned int SCR_WIDTH = 800;
+const unsigned int SCR_HEIGHT = 600;
 
 // camera
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
