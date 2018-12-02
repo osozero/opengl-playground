@@ -65,6 +65,8 @@
     <None Include="shader\lighting\5.2-lighting-casters.vs" />
     <None Include="shader\lighting\5.3-lighting-casters.vs" />
     <None Include="shader\lighting\5.3-lighting-casters.fs" />
+    <None Include="shader\lighting\5.4-lighting-casters.fs" />
+    <None Include="shader\lighting\5.4-lighting-casters.vs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Shader.h">

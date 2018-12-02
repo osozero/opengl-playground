@@ -76,7 +76,7 @@ int main()
 
 	// build and compile our shader zprogram
 	// ------------------------------------
-	Shader lightingShader("shader/lighting/5.3-lighting-casters.vs", "shader/lighting/5.3-lighting-casters.fs");
+	Shader lightingShader("shader/lighting/5.4-lighting-casters.vs", "shader/lighting/5.4-lighting-casters.fs");
 	Shader lampShader("shader/lighting/4.1-lamp.vs", "shader/lighting/4.1-lamp.fs");
 
 	// set up vertex data (and buffer(s)) and configure vertex attributes
@@ -206,6 +206,7 @@ int main()
 		lightingShader.SetVec3("light.position", camera.Position);
 		lightingShader.SetVec3("light.direction", camera.Front);
 		lightingShader.SetFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
+		lightingShader.SetFloat("light.outerCutOff", glm::cos(glm::radians(17.5f)));
 		lightingShader.SetVec3("viewPos", camera.Position);
 	
 		//light properties	
