@@ -76,7 +76,7 @@ int main()
 
 	// build and compile our shader zprogram
 	// ------------------------------------
-	Shader lightingShader("shader/lighting/5.1-lighting-casters.vs", "shader/lighting/5.1-lighting-casters.fs");
+	Shader lightingShader("shader/lighting/5.3-lighting-casters.vs", "shader/lighting/5.3-lighting-casters.fs");
 	Shader lampShader("shader/lighting/4.1-lamp.vs", "shader/lighting/4.1-lamp.fs");
 
 	// set up vertex data (and buffer(s)) and configure vertex attributes
@@ -203,13 +203,23 @@ int main()
 
 		// be sure to activate shader when setting uniforms/drawing objects
 		lightingShader.Use();
-		lightingShader.SetVec3("light.direction", -0.2f,-1.0f,-0.3f);
+		lightingShader.SetVec3("light.position", camera.Position);
+		lightingShader.SetVec3("light.direction", camera.Front);
+		lightingShader.SetFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
 		lightingShader.SetVec3("viewPos", camera.Position);
 	
 		//light properties	
 		lightingShader.SetVec3("light.ambient", 0.2f,0.2f,0.2f);
-		lightingShader.SetVec3("light.diffuse", 0.5f,0.5f,0.5f);
+		lightingShader.SetVec3("light.diffuse", 0.8f,0.8f,0.8f);
 		lightingShader.SetVec3("light.specular", 1.0f, 1.0f, 1.0f);
+
+		lightingShader.SetFloat("light.constant", 1.0f);
+		lightingShader.SetFloat("light.linear", 0.09f);
+		lightingShader.SetFloat("light.quadratic", 0.032f);
+
+
+
+
 
 		// material properties
 		
