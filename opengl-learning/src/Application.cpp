@@ -32,7 +32,7 @@ float lastFrame = 0.0f;
 //light position
 glm::vec3 lightPosition(-9.0f, 1.0f, 3.0f);
 
-int main()
+int mainX()
 {
 	// glfw: initialize and configure
 	// ------------------------------
