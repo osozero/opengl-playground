@@ -131,24 +131,24 @@ int main()
 		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		// don't forget to enable shader before setting uniforms
+		
 		ourShader.Use();
-		ourShader.SetVec3("directionLight.direction", 0.3f, 0.5, -0.5);
-		ourShader.SetVec3("directionLight.ambientColor", 0.2f, 0.2, 0.2);
-		ourShader.SetVec3("directionLight.diffuseColor", 0.3f, 0.1f, 0.4f);
-		ourShader.SetVec3("directionLight.specularColor", 0.0f, 0.2f, 0.2f);
+		ourShader.SetVec3("directionLight.direction", 0.3f, 0.5, 0.5);
+		ourShader.SetVec3("directionLight.ambientColor", 0.2f, 0.2f, 0.2f);
+		ourShader.SetVec3("directionLight.diffuseColor", 0.2f, 0.1f, 0.2f);
+		ourShader.SetVec3("directionLight.specularColor", 0.2f, 0.2f, 0.2f);
 
 		ourShader.SetVec3("viewPos", camera.Position);
 
 		//point light settings
 
 		ourShader.SetVec3("pointLight.position", lightPosition);
-		ourShader.SetVec3("pointLight.ambientColor", 0.1f, 0.1, 0.1);
-		ourShader.SetVec3("pointLight.diffuseColor", sin(glfwGetTime()),0.4f, 0.2);
-		ourShader.SetVec3("pointLight.specularColor", 0.1f, 0.3f, 0.6f);
-		ourShader.SetFloat("constant", 1.0);
-		ourShader.SetFloat("linear",0.7);
-		ourShader.SetFloat("quadratic", 1.8);
+		ourShader.SetVec3("pointLight.ambientColor", 0.2f, 0.2, 0.2);
+		ourShader.SetVec3("pointLight.diffuseColor", 0.6,0.8f, 0.1);
+		ourShader.SetVec3("pointLight.specularColor", 0.1f, 0.9f, 0.0f);
+		ourShader.SetFloat("pointLight.constant", 1.0);
+		ourShader.SetFloat("pointLight.linear",0.09);
+		ourShader.SetFloat("pointLight.quadratic", 0.032);
 
 		
 
@@ -162,6 +162,7 @@ int main()
 
 		// render the loaded model
 		glm::mat4 model(1.0);
+
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f)); // translate it down so it's at the center of the scene
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));	// it's a bit too big for our scene, so scale it down
 		ourShader.SetMat4("model", model);

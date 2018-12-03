@@ -44,9 +44,9 @@ void main()
 
 	vec3 viewDir = normalize(viewPos-FragPos);
 
-	//vec3 result = CalculateDirectionLight(directionLight,norm,viewDir);
+	vec3 result = CalculateDirectionLight(directionLight,norm,viewDir);
 
-	vec3 result = CalculatePointLight(pointLight,norm,FragPos,viewDir);
+	result += CalculatePointLight(pointLight,norm,FragPos,viewDir);
 
     FragColor = vec4(result,1.0) ;
 }
