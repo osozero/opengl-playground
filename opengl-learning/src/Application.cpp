@@ -29,6 +29,9 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
+//light position
+glm::vec3 lightPosition(-9.0f, 1.0f, 3.0f);
+
 int main()
 {
 	// glfw: initialize and configure
@@ -67,6 +70,28 @@ int main()
 		return -1;
 	}
 
+	float lampVertices[]
+	{
+		0.5f,0.5f,0.0f,
+		-0.5f,0.5f,0.0f,
+		0.0f,-0.5f,0.0f
+	};
+
+	//configure lamp buffers
+
+	unsigned int VAO, VBO;
+
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+
+	glBindVertexArray(VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+	glBufferData(GL_ARRAY_BUFFER, sizeof(lampVertices), lampVertices, GL_STATIC_DRAW);
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+
 	// configure global opengl state
 	// -----------------------------
 	glEnable(GL_DEPTH_TEST);
@@ -74,6 +99,8 @@ int main()
 	// build and compile shaders
 	// -------------------------
 	Shader ourShader("shader/model/1.1-model-loading.vs", "shader/model/1.1-model-loading.fs");
+
+	Shader lampShader("shader/lighting/3.1-lamp.vs", "shader/lighting/3.1-lamp.fs");
 
 	// load models
 	// -----------
@@ -85,6 +112,8 @@ int main()
 
 	// render loop
 	// -----------
+
+
 	while (!glfwWindowShouldClose(window))
 	{
 		// per-frame time logic
@@ -104,8 +133,24 @@ int main()
 
 		// don't forget to enable shader before setting uniforms
 		ourShader.Use();
-		auto lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
-		ourShader.SetVec3("lightColor", lightColor);
+		ourShader.SetVec3("directionLight.direction", 0.3f, 0.5, -0.5);
+		ourShader.SetVec3("directionLight.ambientColor", 0.2f, 0.2, 0.2);
+		ourShader.SetVec3("directionLight.diffuseColor", 0.3f, 0.1f, 0.4f);
+		ourShader.SetVec3("directionLight.specularColor", 0.0f, 0.2f, 0.2f);
+
+		ourShader.SetVec3("viewPos", camera.Position);
+
+		//point light settings
+
+		ourShader.SetVec3("pointLight.position", lightPosition);
+		ourShader.SetVec3("pointLight.ambientColor", 0.1f, 0.1, 0.1);
+		ourShader.SetVec3("pointLight.diffuseColor", sin(glfwGetTime()),0.4f, 0.2);
+		ourShader.SetVec3("pointLight.specularColor", 0.1f, 0.3f, 0.6f);
+		ourShader.SetFloat("constant", 1.0);
+		ourShader.SetFloat("linear",0.7);
+		ourShader.SetFloat("quadratic", 1.8);
+
+		
 
 		// view/projection transformations
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
@@ -113,12 +158,30 @@ int main()
 		ourShader.SetMat4("projection", projection);
 		ourShader.SetMat4("view", view);
 
+		
+
 		// render the loaded model
 		glm::mat4 model(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f)); // translate it down so it's at the center of the scene
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));	// it's a bit too big for our scene, so scale it down
 		ourShader.SetMat4("model", model);
 		ourModel.Draw(ourShader);
+
+		glBindVertexArray(VAO);
+		lampShader.Use();
+		model = glm::mat4(1.0f);
+
+		lightPosition.x = sin(glfwGetTime())*3;
+		lightPosition.z = cos(glfwGetTime()) * 2;
+
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		model = glm::translate(model, lightPosition);
+
+		lampShader.SetMat4("model", model);
+		lampShader.SetMat4("view", view);
+		lampShader.SetMat4("projection", projection);
+
+		glDrawArrays(GL_TRIANGLES, 0, 3);
 
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
