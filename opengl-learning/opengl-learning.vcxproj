@@ -123,7 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\AdvancedOpenGL\FaceCulling.cpp" />
+    <ClCompile Include="src\AdvancedOpenGL\Skybox.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Math.cpp" />
     <ClCompile Include="src\Camera.cpp" />
@@ -140,8 +140,14 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="shader\cubemaps\6.1-cubemaps.fs" />
+    <None Include="shader\cubemaps\6.1-cubemaps.vs" />
     <None Include="shader\depth\1.1-depth-testing.fs" />
     <None Include="shader\depth\1.1-depth-testing.vs" />
+    <None Include="shader\framebuffer\5.1-framebuffers.fs" />
+    <None Include="shader\framebuffer\5.1-framebuffers.vs" />
+    <None Include="shader\framebuffer\5.1.framebuffers-screen.fs" />
+    <None Include="shader\framebuffer\5.1.framebuffers-screen.vs" />
     <None Include="shader\lighting\1-lighting-lamp.fs" />
     <None Include="shader\lighting\1-lighting-lamp.vs" />
     <None Include="shader\lighting\1-lighting.fs" />
@@ -174,6 +180,8 @@
     <None Include="shader\model\1.1-model-loading.vs" />
     <None Include="shader\shader.fs" />
     <None Include="shader\shader.vs" />
+    <None Include="shader\skybox\6.1-skybox.fs" />
+    <None Include="shader\skybox\6.1-skybox.vs" />
     <None Include="shader\texture-shader.vs" />
   </ItemGroup>
   <ItemGroup>
