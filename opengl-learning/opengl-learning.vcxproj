@@ -123,7 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\AdvancedOpenGL\DepthTesting.cpp" />
+    <ClCompile Include="src\AdvancedOpenGL\FaceCulling.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Math.cpp" />
     <ClCompile Include="src\Camera.cpp" />
