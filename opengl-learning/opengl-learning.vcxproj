@@ -123,7 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\AdvancedOpenGL\Skybox.cpp" />
+    <ClCompile Include="src\AdvancedOpenGL\Skybox-Environment-Mapping.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Math.cpp" />
     <ClCompile Include="src\Camera.cpp" />
@@ -142,6 +142,8 @@
   <ItemGroup>
     <None Include="shader\cubemaps\6.1-cubemaps.fs" />
     <None Include="shader\cubemaps\6.1-cubemaps.vs" />
+    <None Include="shader\cubemaps\6.2-cubemaps.fs" />
+    <None Include="shader\cubemaps\6.2-cubemaps.vs" />
     <None Include="shader\depth\1.1-depth-testing.fs" />
     <None Include="shader\depth\1.1-depth-testing.vs" />
     <None Include="shader\framebuffer\5.1-framebuffers.fs" />
@@ -182,6 +184,8 @@
     <None Include="shader\shader.vs" />
     <None Include="shader\skybox\6.1-skybox.fs" />
     <None Include="shader\skybox\6.1-skybox.vs" />
+    <None Include="shader\skybox\6.2-skybox.fs" />
+    <None Include="shader\skybox\6.2-skybox.vs" />
     <None Include="shader\texture-shader.vs" />
   </ItemGroup>
   <ItemGroup>

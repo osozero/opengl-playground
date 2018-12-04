@@ -33,7 +33,7 @@
     <ClCompile Include="src\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\AdvancedOpenGL\Skybox.cpp">
+    <ClCompile Include="src\AdvancedOpenGL\Skybox-Environment-Mapping.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -81,6 +81,10 @@
     <None Include="shader\cubemaps\6.1-cubemaps.fs" />
     <None Include="shader\skybox\6.1-skybox.vs" />
     <None Include="shader\skybox\6.1-skybox.fs" />
+    <None Include="shader\cubemaps\6.2-cubemaps.vs" />
+    <None Include="shader\cubemaps\6.2-cubemaps.fs" />
+    <None Include="shader\skybox\6.2-skybox.vs" />
+    <None Include="shader\skybox\6.2-skybox.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Shader.h">
