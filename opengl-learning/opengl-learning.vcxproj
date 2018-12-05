@@ -123,7 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\AdvancedOpenGL\Instancing.cpp" />
+    <ClCompile Include="src\AdvancedOpenGL\AntiAliasing.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Math.cpp" />
     <ClCompile Include="src\Camera.cpp" />
@@ -140,6 +140,8 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="shader\antialiasing\11.1-antialiasing.fs" />
+    <None Include="shader\antialiasing\11.1-antialiasing.vs" />
     <None Include="shader\cubemaps\6.1-cubemaps.fs" />
     <None Include="shader\cubemaps\6.1-cubemaps.vs" />
     <None Include="shader\cubemaps\6.2-cubemaps.fs" />

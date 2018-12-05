@@ -33,7 +33,7 @@
     <ClCompile Include="src\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\AdvancedOpenGL\Instancing.cpp">
+    <ClCompile Include="src\AdvancedOpenGL\AntiAliasing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -97,6 +97,8 @@
     <None Include="shader\instancing\10.3-asteroids.fs" />
     <None Include="shader\instancing\10.3-planet.vs" />
     <None Include="shader\instancing\10.3-planet.fs" />
+    <None Include="shader\antialiasing\11.1-antialiasing.vs" />
+    <None Include="shader\antialiasing\11.1-antialiasing.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Shader.h">
