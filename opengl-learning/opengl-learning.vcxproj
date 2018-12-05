@@ -123,7 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\AdvancedOpenGL\Skybox-Environment-Mapping.cpp" />
+    <ClCompile Include="src\AdvancedOpenGL\GeometryShaderShowNormal.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Math.cpp" />
     <ClCompile Include="src\Camera.cpp" />
@@ -150,6 +150,14 @@
     <None Include="shader\framebuffer\5.1-framebuffers.vs" />
     <None Include="shader\framebuffer\5.1.framebuffers-screen.fs" />
     <None Include="shader\framebuffer\5.1.framebuffers-screen.vs" />
+    <None Include="shader\geometryshader\9.2-geometry-shader.fs" />
+    <None Include="shader\geometryshader\9.2-geometry-shader.gs" />
+    <None Include="shader\geometryshader\9.2-geometry-shader.vs" />
+    <None Include="shader\geometryshader\9.3-default.vs" />
+    <None Include="shader\geometryshader\9.3-default.fs" />
+    <None Include="shader\geometryshader\9.3-normal-visualization.fs" />
+    <None Include="shader\geometryshader\9.3-normal-visualization.gs" />
+    <None Include="shader\geometryshader\9.3-normal-visualization.vs" />
     <None Include="shader\lighting\1-lighting-lamp.fs" />
     <None Include="shader\lighting\1-lighting-lamp.vs" />
     <None Include="shader\lighting\1-lighting.fs" />

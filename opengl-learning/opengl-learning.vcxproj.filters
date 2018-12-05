@@ -33,7 +33,7 @@
     <ClCompile Include="src\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\AdvancedOpenGL\Skybox-Environment-Mapping.cpp">
+    <ClCompile Include="src\AdvancedOpenGL\GeometryShaderShowNormal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -85,6 +85,14 @@
     <None Include="shader\cubemaps\6.2-cubemaps.fs" />
     <None Include="shader\skybox\6.2-skybox.vs" />
     <None Include="shader\skybox\6.2-skybox.fs" />
+    <None Include="shader\geometryshader\9.2-geometry-shader.vs" />
+    <None Include="shader\geometryshader\9.2-geometry-shader.fs" />
+    <None Include="shader\geometryshader\9.2-geometry-shader.gs" />
+    <None Include="shader\geometryshader\9.3-default.vs" />
+    <None Include="shader\geometryshader\9.3-default.fs" />
+    <None Include="shader\geometryshader\9.3-normal-visualization.vs" />
+    <None Include="shader\geometryshader\9.3-normal-visualization.fs" />
+    <None Include="shader\geometryshader\9.3-normal-visualization.gs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Shader.h">

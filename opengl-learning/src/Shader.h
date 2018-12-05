@@ -11,7 +11,7 @@ public:
 	unsigned int ID;
 	
 	Shader() = delete;
-	Shader(const GLchar* vertexPath, const GLchar* fragmentPath);
+	Shader(const GLchar* vertexPath, const GLchar* fragmentPath,const GLchar* geometryPath=nullptr);
 
 	//activate-deactivate shader
 	void Use();
