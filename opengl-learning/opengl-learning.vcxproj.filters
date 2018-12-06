@@ -33,7 +33,7 @@
     <ClCompile Include="src\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\AdvancedOpenGL\AntiAliasing.cpp">
+    <ClCompile Include="src\AdvancedLighting\BlinnPhong.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -99,6 +99,8 @@
     <None Include="shader\instancing\10.3-planet.fs" />
     <None Include="shader\antialiasing\11.1-antialiasing.vs" />
     <None Include="shader\antialiasing\11.1-antialiasing.fs" />
+    <None Include="shader\advancedLighting\1.advanced-lighting.vs" />
+    <None Include="shader\advancedLighting\1.advanced-lighing.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Shader.h">
