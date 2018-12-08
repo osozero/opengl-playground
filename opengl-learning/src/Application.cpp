@@ -9,6 +9,33 @@
 #include "stb_image/stb_image.h"
 #include "Modelh.h"
 
+#define glCheckError() glCheckError_(__FILE__,__LINE__)
+
+
+GLenum glCheckError_(const char* file, int line)
+{
+	GLenum errorCode;
+
+	while((errorCode = glGetError()!=GL_NO_ERROR))
+	{
+		std::string error;
+		switch (errorCode)
+		{
+		case GL_INVALID_ENUM:                  error = "INVALID_ENUM"; break;
+		case GL_INVALID_VALUE:                 error = "INVALID_VALUE"; break;
+		case GL_INVALID_OPERATION:             error = "INVALID_OPERATION"; break;
+		case GL_OUT_OF_MEMORY:                 error = "OUT_OF_MEMORY"; break;
+		case GL_INVALID_FRAMEBUFFER_OPERATION: error = "INVALID_FRAMEBUFFER_OPERATION"; break;
+		}
+
+		std::cout << error << " | " << file << " (" << line << ")" << std::endl;
+	}
+
+	return errorCode;
+}
+
+
+
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -32,7 +59,7 @@ float lastFrame = 0.0f;
 //light position
 glm::vec3 lightPosition(-9.0f, 1.0f, 3.0f);
 
-int mainX()
+int main()
 {
 	// glfw: initialize and configure
 	// ------------------------------
@@ -70,12 +97,17 @@ int mainX()
 		return -1;
 	}
 
+	glGetError();
+
 	float lampVertices[]
 	{
 		0.5f,0.5f,0.0f,
 		-0.5f,0.5f,0.0f,
 		0.0f,-0.5f,0.0f
 	};
+
+
+
 
 	//configure lamp buffers
 
